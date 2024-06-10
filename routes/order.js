@@ -32,7 +32,7 @@ router.get("/:id", isUserValid, async (req, res) => {
   }
 });
 
-router.post("/", isUserValid, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { customerName, customerEmail, products, totalPrice, status } =
       req.body;

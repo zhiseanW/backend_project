@@ -8,7 +8,7 @@ const JWT_PRIVATE_KEY = "fasdfasdfsadf-asdfavavsrf_dspoyuiy-lmhmknh";
 
 const MONGODB_URL = "mongodb://127.0.0.1:27017/";
 
-const FRONTEND_URL = "http://localhost:3000";
+const FRONTEND_URL = "http://localhost:3000/";
 
 module.exports = {
   BILLPLZ_API_URL,

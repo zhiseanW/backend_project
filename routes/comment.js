@@ -29,8 +29,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const name = req.body.name;
-    const newComment = await createComment(name);
+    const { username, music, comment } = req.body;
+    const newComment = await createComment(username, music, comment);
     res.status(200).send(newComment);
   } catch (error) {
     res.status(400).send({
@@ -40,13 +40,9 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const { user, music, comment } = req.body;
-  const updatedComment = await updateComment(
-    req.params.id,
-    user,
-    music,
-    comment
-  );
+  const user_id = req.params.id;
+  const { comment } = req.body;
+  const updatedComment = await updateComment(user_id, comment);
   res.status(200).send(updatedComment);
 });
 

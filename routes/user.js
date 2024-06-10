@@ -61,10 +61,10 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
-    const bio = req.body.bio;
-    const user = await updateBio(id, bio);
-    res.status(200).send(user);
+    const { name, profPic, bio } = req.body;
+    const newBio = await updateBio(req.params.id, name, profPic, bio);
+
+    res.status(200).send(newBio);
   } catch (error) {
     res.status(400).send({ message: error.message });
   }

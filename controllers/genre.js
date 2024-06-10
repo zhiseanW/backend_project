@@ -14,9 +14,9 @@ const addGenre = async (name) => {
   return newGenre;
 };
 
-const updateGenre = async (name) => {
+const updateGenre = async (genre_id, name) => {
   const updatedGenre = await Genre.findByIdAndUpdate(
-    _id,
+    genre_id,
     {
       name: name,
     },

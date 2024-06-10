@@ -22,7 +22,7 @@ const isUserValid = async (req, res, next) => {
     } else {
       // this is not  a valid user
       res.status(403).send({
-        message: "You are not authorized to perform this action",
+        message: "You are not authorized to perform this actionaaa",
       });
     }
   } catch (error) {
@@ -34,12 +34,11 @@ const isUserValid = async (req, res, next) => {
   }
 };
 
-// validate if the logged in user is an admin
 const isAdmin = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     console.log(token);
-    // perform user validation
+
     const decoded = jwt.verify(token, JWT_PRIVATE_KEY);
     // console.log(decoded);
     const user = await getUserByEmail(decoded.email);
@@ -59,7 +58,7 @@ const isAdmin = async (req, res, next) => {
     // error
     console.log(error);
     res.status(403).send({
-      message: "You are not authorized to perform this actionsd",
+      message: "You are not authorized to perform this action",
     });
   }
 };

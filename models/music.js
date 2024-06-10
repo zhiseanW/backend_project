@@ -1,3 +1,4 @@
+const { text } = require("express");
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
@@ -25,6 +26,7 @@ const musicSchema = new Schema({
     type: Number,
     required: true,
   },
+
   soldNumber: {
     type: Number,
     default: 0,

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const commentSchema = new Schema({
-  user: {
+  username: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },

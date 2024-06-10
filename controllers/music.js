@@ -25,7 +25,7 @@ const getMusic = async (music_id) => {
   return music;
 };
 
-const getMusics = async (genre, artist, perPage = 4, page = 1) => {
+const getMusics = async (genre, artist, perPage = 6, page = 1) => {
   try {
     let filter = {};
     let sorted = { _id: -1 };
@@ -49,8 +49,8 @@ const getMusics = async (genre, artist, perPage = 4, page = 1) => {
 };
 
 const updateMusic = async (
-  musicName,
   music_id,
+  musicName,
   music_url,
   description,
   genre,

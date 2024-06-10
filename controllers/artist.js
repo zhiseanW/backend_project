@@ -14,9 +14,9 @@ const addArtist = async (name) => {
   return newArtist;
 };
 
-const updateArtist = async (name) => {
+const updateArtist = async (artist_id, name) => {
   const updatedArtist = await Artist.findByIdAndUpdate(
-    _id,
+    artist_id,
     {
       name: name,
     },

@@ -32,7 +32,7 @@ router.post("/", isAdmin, async (req, res) => {
   }
 });
 
-router.put("/", isAdmin, async (req, res) => {
+router.put("/:id", isAdmin, async (req, res) => {
   try {
     const genre_id = req.params.id;
     const name = req.body.name;

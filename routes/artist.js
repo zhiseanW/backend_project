@@ -32,10 +32,11 @@ router.post("/", isAdmin, async (req, res) => {
   }
 });
 
-router.put("/", isAdmin, async (req, res) => {
+router.put("/:id", isAdmin, async (req, res) => {
   try {
-    const name = req.body.name;
-    const updatedArtist = await updateArtist(name);
+    const artist_id = req.params.id;
+    const { name } = req.body;
+    const updatedArtist = await updateArtist(artist_id, name);
     res.status(200).send(updatedArtist);
   } catch (error) {
     res.status(400).send({

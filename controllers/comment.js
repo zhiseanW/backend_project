@@ -3,17 +3,17 @@ const User = require("../models/user");
 
 const Comment = require("../models/comment");
 
-const createComment = async (user, music, comment) => {
+const createComment = async (username, music, comment) => {
   try {
     const newComment = new Comment({
-      user: user,
+      username: username,
       music: music,
       comment: comment,
     });
     await newComment.save();
-    res.status(200).send(newComment);
+    return newComment;
   } catch (error) {
-    res.status(400).send({ message: error.message });
+    throw new Error(error);
   }
 };
 
@@ -27,28 +27,26 @@ const getComment = async (comment_id) => {
   return comment;
 };
 
-const updateComment = async (comment_id, user, music, comment) => {
+const updateComment = async (comment_id, comment) => {
   try {
     const updatedComment = await Comment.findByIdAndUpdate(
       comment_id,
       {
-        user: user,
-        music: music,
         comment: comment,
       },
       {
         new: true,
       }
     );
-
     return updatedComment;
   } catch (error) {
-    res.status(400).send({ message: error.message });
+    throw new Error(error);
   }
 };
 
 const deleteComment = async (_id) => {
-  return await Comment.findByIdAndDelete(_id);
+  const deletedComment = await Comment.findByIdAndDelete(_id);
+  return deletedComment;
 };
 
 module.exports = {
