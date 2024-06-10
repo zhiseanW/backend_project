@@ -2,6 +2,7 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { JWT_PRIVATE_KEY } = require("../config");
+const { get } = require("mongoose");
 
 const generateTokenForUser = (user) => {
   return jwt.sign(
@@ -20,6 +21,10 @@ const generateTokenForUser = (user) => {
 const getUser = async (user_id) => {
   const user = await User.findById(user_id);
   return user;
+};
+const getUsers = async () => {
+  const users = await User.find();
+  return users;
 };
 
 const updateBio = async (user_id, name, profPic, bio) => {
@@ -99,4 +104,5 @@ module.exports = {
   loginUser,
   signUpUser,
   updateBio,
+  getUsers,
 };

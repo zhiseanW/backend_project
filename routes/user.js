@@ -8,6 +8,7 @@ const {
   getUserByEmail,
   loginUser,
   signUpUser,
+  getUsers,
 } = require("../controllers/user");
 
 router.post("/login", async (req, res) => {
@@ -34,6 +35,15 @@ router.post("/signup", async (req, res) => {
     const user = await signUpUser(name, email, password);
     // send back the newly created user data
     res.status(200).send(user);
+  } catch (error) {
+    res.status(400).send({ message: error.message });
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const users = await getUsers();
+    res.status(200).send(users);
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
